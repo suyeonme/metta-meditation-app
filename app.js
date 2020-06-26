@@ -31,7 +31,7 @@ const app = () => {
   const renderUserName = () => {
     // Check local storage
     if (localStorage.getItem('name') === null) {
-      const userName = prompt('What is your name?');
+      const userName = prompt('Hi there, What is your name?');
 
       // Save value to local storage
       const name = [];
@@ -45,7 +45,6 @@ const app = () => {
     }
   };
 
-  
   // Render user name on UI
   renderUserName();
 
@@ -58,10 +57,13 @@ const app = () => {
     checkPlaying(DOMstring.sound);
   });
 
-/*  document.addEventListener('keypress', e => {
-    if (e.keyCode === 13 || e.keyCode === 32) checkPlaying(DOMstring.sound);
-  }); */
-
+document.addEventListener('keydown', e => {
+    if (e.keyCode === 32 || e.keyCode === 13) {
+      e.preventDefault();
+      checkPlaying(DOMstring.sound);
+    };
+  });
+    
   // Display Selected time
   DOMstring.selectTimeBtns.forEach(selectTimeBtn => {
     selectTimeBtn.addEventListener('click', () => {
