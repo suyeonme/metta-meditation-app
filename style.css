@@ -14,7 +14,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: white;
     position: relative;
-    background-image: url("./img/mountain.jpg");
+    background-image: url("./img/sunrise.jpg");
     background-size: cover;
 }
 
@@ -123,6 +123,10 @@ body {
     width: 8rem;
     height: 8rem;
     padding: 2rem;
+}
+
+.sound-picker button:focus {
+    outline: none;
 }
 
 .sound-picker button:nth-child(1) {

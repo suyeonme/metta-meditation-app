@@ -8,7 +8,8 @@ const app = () => {
     outline: document.querySelector('.moving-outline circle'),
     soundBtns: Array.from(document.querySelectorAll('.sound-picker button')),
     displayTime: document.querySelector('.time-display'),
-    selectTimeBtns: Array.from(document.querySelectorAll('.time-duration button'))
+    selectTimeBtns: Array.from(document.querySelectorAll('.time-duration button')),
+    userName: document.querySelector('.title h1')
   };
 
   // Defalut duration 
@@ -17,7 +18,6 @@ const app = () => {
   // Get length of outline
   const outlineLength = DOMstring.outline.getTotalLength();
 
-  // Stop and play sound
   const checkPlaying = (sound => {
     if (sound.paused) {
       sound.play();
@@ -28,6 +28,27 @@ const app = () => {
     };
   });
 
+  const renderUserName = () => {
+    // Check local storage
+    if (localStorage.getItem('name') === null) {
+      const userName = prompt('What is your name?');
+
+      // Save value to local storage
+      const name = [];
+      name.push(userName);
+      localStorage.setItem('name', name);
+
+      // Render user name on UI
+      DOMstring.userName.textContent = `Welcome, ${localStorage.getItem('name')}`;
+    } else {
+      DOMstring.userName.textContent = `Welcome, ${localStorage.getItem('name')}`;
+    }
+  };
+
+  
+  // Render user name on UI
+  renderUserName();
+
   // Animate outline of play button 
   DOMstring.outline.style.strokeDasharray = outlineLength;
   DOMstring.outline.style.strokeDashoffset = outlineLength;
@@ -36,6 +57,10 @@ const app = () => {
   DOMstring.playBtn.addEventListener('click', () => {
     checkPlaying(DOMstring.sound);
   });
+
+/*  document.addEventListener('keypress', e => {
+    if (e.keyCode === 13 || e.keyCode === 32) checkPlaying(DOMstring.sound);
+  }); */
 
   // Display Selected time
   DOMstring.selectTimeBtns.forEach(selectTimeBtn => {
@@ -50,6 +75,8 @@ const app = () => {
   // Select sound
   DOMstring.soundBtns.forEach(soundBtn => {
     soundBtn.addEventListener('click', () => {
+      DOMstring.playBtn.src = './img/svg/play.svg';
+
       // Change sound source
       DOMstring.sound.src = soundBtn.getAttribute('data-sound');
 
@@ -57,7 +84,7 @@ const app = () => {
       document.body.style.backgroundImage = `url("${soundBtn.getAttribute('data-image')}")`;
 
       // Play sound
-      checkPlaying(DOMstring.sound);
+      //checkPlaying(DOMstring.sound);
     });
   });
 
