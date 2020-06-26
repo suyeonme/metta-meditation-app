@@ -9,7 +9,7 @@ const app = () => {
     video: document.querySelector('.video-container video'), // Check
     soundBtn: Array.from(document.querySelectorAll('.sound-picker button')),
     displayTime: document.querySelector('.time-display'),
-    selectTimeBtn: Array.from(document.querySelectorAll('.time-duration button')),
+    selectTimeBtns: Array.from(document.querySelectorAll('.time-duration button')),
   };
 
   // Defalut duration 
@@ -38,6 +38,16 @@ const app = () => {
   // Play sound
   DOMstring.playBtn.addEventListener('click', () => {
     checkPlaying(DOMstring.sound);
+  });
+
+  // Display Selected time
+  DOMstring.selectTimeBtns.forEach(selectTimeBtn => {
+    selectTimeBtn.addEventListener('click', () => {
+      duration = selectTimeBtn.getAttribute("data-time");
+
+      // Display text
+      DOMstring.displayTime.textContent = `${Math.floor(duration / 60)}:${Math.floor(duration % 60)}`;
+    });
   });
 
 };
