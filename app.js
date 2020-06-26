@@ -11,13 +11,13 @@ const app = () => {
     selectTimeBtns: Array.from(document.querySelectorAll('.time-duration button')),
     userName: document.querySelector('.title h1')
   };
-
+  
   // Defalut duration 
   let duration = 600;
-
+  
   // Get length of outline
   const outlineLength = DOMstring.outline.getTotalLength();
-
+  
   const checkPlaying = (sound => {
     if (sound.paused) {
       sound.play();
@@ -27,17 +27,17 @@ const app = () => {
       DOMstring.playBtn.src = './img/svg/play.svg';
     };
   });
-
+  
   const renderUserName = () => {
     // Check local storage
     if (localStorage.getItem('name') === null) {
       const userName = prompt('Hi there, What is your name?');
-
+  
       // Save value to local storage
       const name = [];
       name.push(userName);
       localStorage.setItem('name', name);
-
+  
       // Render user name on UI
       DOMstring.userName.textContent = `Welcome, ${localStorage.getItem('name')}`;
     } else {
@@ -45,6 +45,7 @@ const app = () => {
     }
   };
 
+  /****** CONTROL APP *******/
   // Render user name on UI
   renderUserName();
 
@@ -84,9 +85,6 @@ document.addEventListener('keydown', e => {
 
       // Change bg image with matched sound
       document.body.style.backgroundImage = `url("${soundBtn.getAttribute('data-image')}")`;
-
-      // Play sound
-      //checkPlaying(DOMstring.sound);
     });
   });
 
