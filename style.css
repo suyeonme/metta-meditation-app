@@ -18,19 +18,6 @@ body {
     background-size: cover;
 }
 
-/* VIDEO */
-/* .video-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -10;
-}
-.video-container video {
-    width: 100%;
-} */
-
 .app {
     height: 100vh;
     display: flex;

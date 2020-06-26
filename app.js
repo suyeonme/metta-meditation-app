@@ -73,15 +73,18 @@ const app = () => {
 
     // Animate text
     DOMstring.displayTime.textContent = `${minutes}:${seconds}`;
+
+    // Reset when time is over
+    if (currentTime >= duration) {
+      DOMstring.sound.pause();
+      DOMstring.sound.currentTime = 0;
+      DOMstring.playBtn.src = './img/svg/play.svg';
+    };
   };
 
 };
 
 app();
 
-      //DOMstring.video.play();
-      //DOMstring.video.pause();
-      //DOMstring.video.src = sound.getAttribute('data-video');
-      //video: document.querySelector('.video-container video');
 
 
