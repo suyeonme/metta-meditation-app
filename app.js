@@ -61,6 +61,20 @@ const app = () => {
     });
   });
 
+  // Animate circle of play button 
+  DOMstring.sound.ontimeupdate = () => {
+
+    let currentTime = DOMstring.sound.currentTime;
+    let elapsed = duration - currentTime;
+    let seconds = Math.floor(elapsed % 60);
+    let minutes = Math.floor(elapsed / 60);
+    let progress = outlineLength - (currentTime / duration) * outlineLength;
+    DOMstring.outline.style.strokeDashoffset = progress;
+
+    // Animate text
+    DOMstring.displayTime.textContent = `${minutes}:${seconds}`;
+  };
+
 };
 
 app();
