@@ -6,10 +6,9 @@ const app = () => {
     sound: document.querySelector('.music'),
     playBtn: document.querySelector('.play-btn'),
     outline: document.querySelector('.moving-outline circle'),
-    video: document.querySelector('.video-container video'), // Check
-    soundBtn: Array.from(document.querySelectorAll('.sound-picker button')),
+    soundBtns: Array.from(document.querySelectorAll('.sound-picker button')),
     displayTime: document.querySelector('.time-display'),
-    selectTimeBtns: Array.from(document.querySelectorAll('.time-duration button')),
+    selectTimeBtns: Array.from(document.querySelectorAll('.time-duration button'))
   };
 
   // Defalut duration 
@@ -22,11 +21,9 @@ const app = () => {
   const checkPlaying = (sound => {
     if (sound.paused) {
       sound.play();
-      //DOMstring.video.play();
       DOMstring.playBtn.src = './img/svg/pause.svg';
     } else {
       sound.pause();
-      //DOMstring.video.pause();
       DOMstring.playBtn.src = './img/svg/play.svg';
     };
   });
@@ -50,8 +47,27 @@ const app = () => {
     });
   });
 
+  // Select sound
+  DOMstring.soundBtns.forEach(soundBtn => {
+    soundBtn.addEventListener('click', () => {
+      // Change sound source
+      DOMstring.sound.src = soundBtn.getAttribute('data-sound');
+
+      // Change bg image with matched sound
+      document.body.style.backgroundImage = `url("${soundBtn.getAttribute('data-image')}")`;
+
+      // Play sound
+      checkPlaying(DOMstring.sound);
+    });
+  });
+
 };
 
 app();
+
+      //DOMstring.video.play();
+      //DOMstring.video.pause();
+      //DOMstring.video.src = sound.getAttribute('data-video');
+      //video: document.querySelector('.video-container video');
 
 
