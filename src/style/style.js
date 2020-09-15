@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 const sizes = {
+  xl: {
+    fontWeight: 700,
+    fontSize: '3.5rem',
+  },
   lg: {
     fontWeight: 700,
     fontSize: '3rem',

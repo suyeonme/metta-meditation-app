@@ -22,9 +22,9 @@ const ArrowIcon = styled.img`
   transform: translate(-50%, -50%);
 `;
 
-function Button() {
+function Button({ onClick, name }) {
   return (
-    <BtnContainer>
+    <BtnContainer onClick={() => onClick(name)}>
       <ArrowIcon src={Arrow} alt="button" />
     </BtnContainer>
   );

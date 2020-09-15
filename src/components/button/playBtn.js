@@ -18,10 +18,10 @@ const PlayIcon = styled.img`
   width: 18px;
 `;
 
-function PlayBtn() {
+function PlayBtn({ onClick, playing }) {
   return (
-    <Container>
-      <PlayIcon src={Play} alt="play" />
+    <Container onClick={onClick}>
+      <PlayIcon src={playing ? Pause : Play} alt="play" />
     </Container>
   );
 }

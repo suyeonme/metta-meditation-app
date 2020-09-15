@@ -1,78 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
+import { Container } from './themeStyles';
 import { Title, FlexColDiv } from '../../style/style';
-import PlayBtn from '../button/playBtn';
+import ProgressBar from '../progressBar/progressBar';
+import TimerBtn from '../button/TimerBtn';
+import Player from '../../hooks/useAudio';
 
-import OceanSound from '../../sounds/aquatic.mp3';
-import mountainSound from '../../sounds/concentration.mp3';
-import rainSound from '../../sounds/rain.mp3';
+function Theme(props) {
+  const { url } = props;
 
-import MeditatorIcon from '../../images/meditator.svg';
-import Wave from '../../images/wave-2.png';
-import Moon from '../../images/moon.png';
-import Mountain from '../../images/mountain-2.png';
-import Rain from '../../images/rain.png';
+  const [start, setStart] = useState(false);
+  const [duration, setDuration] = useState({ min: 600, sec: 0 });
+  const { min, sec } = duration;
 
-import {
-  Container,
-  PlayerContainer,
-  FigureIcon,
-  Icon,
-  SVGIcon,
-  Timer,
-} from './themeStyles';
+  const displayTime = `${Math.floor(min / 60)}:${Math.floor(sec % 60)}`;
 
-const svgConfig = {
-  width: 453,
-  height: 453,
-  viewBox: '0 0 453 453',
-  fill: 'none',
-  xmlns: 'http://www.w3.org/2000/svg',
-};
+  const handleClick = time => {
+    setDuration({ min: time, sec: 0 });
+  };
 
-const circleConfig = {
-  cx: 226.5,
-  cy: 226.5,
-  r: 216.5,
-};
+  const handleToggle = () => {
+    setStart(!start);
+  };
 
-function Theme({ theme }) {
+  const updateTime = () => {
+    if (start) {
+      if (sec === 0) {
+        setDuration({
+          min: min - 1,
+          sec: 59,
+        });
+      } else {
+        setDuration({ ...duration, sec: sec - 1 });
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (start) {
+      const token = setTimeout(updateTime, 1000);
+
+      return function cleanUp() {
+        clearTimeout(token);
+      };
+    }
+  });
+
   return (
     <Container>
       <Title size="md">No one save us but ourselves</Title>
-
-      <PlayerContainer>
-        <audio class="music">
-          <source src={OceanSound} />
-        </audio>
-
-        <FigureIcon src={MeditatorIcon} alt="meditator" />
-
-        <SVGIcon
-          // class="track-outline"
-          {...svgConfig}>
-          <circle {...circleConfig} stroke="white" stroke-width="20" />
-        </SVGIcon>
-        <SVGIcon
-          // class="moving-outline"
-          {...svgConfig}>
-          <circle {...circleConfig} stroke="#018EBA" stroke-width="20" />
-        </SVGIcon>
-      </PlayerContainer>
-
+      <ProgressBar duration={duration} displayTime={displayTime} />
       <FlexColDiv>
-        <Timer size="sm">0:00</Timer>
-        <PlayBtn />
+        <Player url={url} setStart={handleToggle} />
+        <TimerBtn onClick={handleClick} />
       </FlexColDiv>
-
-      {/* <Icon src={Wave} wave />
-      <Icon src={Moon} moon /> */}
-
-      {/* <Icon src={Mountain} bigMountain />
-      <Icon src={Mountain} smallMountain /> */}
-
-      <Icon src={Rain} leftRain />
-      <Icon src={Rain} rightRain />
+      {props.children}
     </Container>
   );
 }

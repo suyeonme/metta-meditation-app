@@ -15,13 +15,9 @@ export const Container = styled.div`
 
 export const PlayerContainer = styled.div`
   position: relative;
-  width: 15rem;
-  height: 15rem;
+  width: 19rem;
+  height: 19rem;
   margin: 0 auto;
-  ${'' /* display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex: 1; */}
 `;
 
 export const SVGIcon = styled.svg`
@@ -29,7 +25,7 @@ export const SVGIcon = styled.svg`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 13rem;
+  height: 15rem;
   pointer-events: none;
 `;
 
@@ -38,10 +34,14 @@ export const FigureIcon = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 65%;
 `;
 
 export const Timer = styled(Title)`
+  position: absolute;
+  bottom: 17%;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   text-align: center;
 `;
