@@ -5,9 +5,9 @@ import { Title, NavLink } from '../style/style';
 import Card from '../components/card/card';
 import { CardsContainer } from '../components/card/card';
 
-import WaveIcon from '../images/wave-1.png';
-import mountainIcon from '../images/mountain.png';
-import rainIcon from '../images/rain.png';
+import WaveIcon from '../assets/wave-1.png';
+import mountainIcon from '../assets/mountain.png';
+import rainIcon from '../assets/rain.png';
 
 const Container = styled.div`
   text-align: center;
@@ -39,4 +39,4 @@ function Themes() {
   );
 }
 
-export default Themes;
+export default React.memo(Themes);

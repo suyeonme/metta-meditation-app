@@ -3,8 +3,8 @@ import React from 'react';
 import { Icon } from '../components/theme/themeStyles';
 import Theme from '../components/theme/theme';
 
-import Wave from '../images/wave-2.png';
-import Moon from '../images/moon.png';
+import Wave from '../assets/wave-2.png';
+import Moon from '../assets/moon.png';
 
 function OceanWave(props) {
   return (

@@ -1,43 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
 import { Container } from './themeStyles';
-import { Title, FlexColDiv } from '../../style/style';
+import { Title } from '../../style/style';
 import ProgressBar from '../progressBar/progressBar';
 import TimerBtn from '../button/TimerBtn';
-import Player from '../../hooks/useAudio';
+import PlayBtn from '../button/playBtn';
 
 function Theme(props) {
   const { url } = props;
+  const [audio] = useState(new Audio(url));
+  const [playing, setPlaying] = useState(false);
+  const [duration, setDuration] = useState(600);
+  const [currentTime, setCurrentTime] = useState(0);
 
-  const [start, setStart] = useState(false);
-  const [duration, setDuration] = useState({ min: 600, sec: 0 });
-  const { min, sec } = duration;
-
-  const displayTime = `${Math.floor(min / 60)}:${Math.floor(sec % 60)}`;
-
-  const handleClick = time => {
-    setDuration({ min: time, sec: 0 });
-  };
-
-  const handleToggle = () => {
-    setStart(!start);
-  };
-
-  const updateTime = () => {
-    if (start) {
-      if (sec === 0) {
-        setDuration({
-          min: min - 1,
-          sec: 59,
-        });
-      } else {
-        setDuration({ ...duration, sec: sec - 1 });
-      }
-    }
-  };
+  // Play audio
+  useEffect(() => {
+    playing ? audio.play() : audio.pause();
+  }, [playing, audio]);
 
   useEffect(() => {
-    if (start) {
+    audio.addEventListener('ended', () => setPlaying(false));
+    return () => {
+      audio.removeEventListener('ended', () => setPlaying(false));
+    };
+  }, [audio]);
+
+  //Update duration
+  useEffect(() => {
+    if (currentTime >= duration) return;
+    if (playing) {
       const token = setTimeout(updateTime, 1000);
 
       return function cleanUp() {
@@ -46,17 +37,35 @@ function Theme(props) {
     }
   });
 
+  const handleClick = time => setDuration(time);
+  const handleToggle = () => setPlaying(!playing);
+  const updateTime = () => {
+    if (playing) setDuration(duration - 1);
+  };
+
+  audio.ontimeupdate = () => {
+    setCurrentTime(audio.currentTime);
+
+    if (currentTime >= duration) {
+      audio.pause();
+      audio.currentTime = 0;
+      setPlaying(false);
+    }
+  };
+
   return (
     <Container>
       <Title size="md">No one save us but ourselves</Title>
-      <ProgressBar duration={duration} displayTime={displayTime} />
-      <FlexColDiv>
-        <Player url={url} setStart={handleToggle} />
-        <TimerBtn onClick={handleClick} />
-      </FlexColDiv>
+      <ProgressBar
+        playing={playing}
+        duration={duration}
+        currentTime={Math.floor(currentTime)}
+      />
+      <PlayBtn playing={playing} onClick={handleToggle} />
+      <TimerBtn onClick={handleClick} />
       {props.children}
     </Container>
   );
 }
 
-export default Theme;
+export default React.memo(Theme);

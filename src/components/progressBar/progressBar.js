@@ -8,14 +8,18 @@ import {
   Timer,
 } from '../theme/themeStyles';
 
-function ProgressBar({ duration, displayTime }) {
-  const circleRef = useRef();
+function ProgressBar({ duration, currentTime, playing }) {
   const [length, setLength] = useState();
+  const circleRef = useRef();
+
+  const progress = length - (currentTime / duration) * length;
+  const elapsed = duration - currentTime;
+  const sec = Math.floor(elapsed % 60);
+  const min = Math.floor(elapsed / 60);
 
   useEffect(() => {
     const circleLength = circleRef.current.getTotalLength();
     setLength(circleLength);
-    console.log(circleLength);
   }, []);
 
   const svgConfig = {
@@ -30,31 +34,32 @@ function ProgressBar({ duration, displayTime }) {
     cx: 226.5,
     cy: 226.5,
     r: 216.5,
+    strokeWidth: 20,
   };
+
   return (
     <PlayerContainer>
       <FigureIcon src={MeditatorIcon} alt="meditator" />
 
-      <SVGIcon
-        // class="track-outline"
-        {...svgConfig}>
-        <circle {...circleConfig} stroke="white" strokeWidth="20" />
+      <SVGIcon {...svgConfig}>
+        <circle {...circleConfig} stroke="#A0BDE6" />
       </SVGIcon>
-      <SVGIcon
-        // class="moving-outline"
-        {...svgConfig}>
+      <SVGIcon {...svgConfig}>
         <circle
           {...circleConfig}
-          stroke="#018EBA"
-          strokeWidth="20"
           ref={circleRef}
-          //style={{ strokeDasharray: length, strokeDashoffset: length }}
+          stroke="#3680EA"
+          transform="rotate(-90 226.5 226.5)"
+          style={{
+            strokeDasharray: length,
+            strokeDashoffset: playing ? progress : length,
+          }}
         />
       </SVGIcon>
 
-      <Timer size="sm">{displayTime}</Timer>
+      <Timer size="sm">{`${min}: ${sec}`}</Timer>
     </PlayerContainer>
   );
 }
 
-export default ProgressBar;
+export default React.memo(ProgressBar);

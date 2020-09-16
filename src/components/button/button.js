@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Arrow from '../../images/arrow.svg';
+import Arrow from '../../assets/arrow.svg';
 
 export const BtnContainer = styled.button`
   position: relative;

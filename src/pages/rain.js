@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon } from '../components/theme/themeStyles';
-import RainIcon from '../images/rain.png';
+import RainIcon from '../assets/rain.png';
 import Theme from '../components/theme/theme';
 
 function Rain(props) {

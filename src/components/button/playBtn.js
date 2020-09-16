@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { BtnContainer } from './button';
-import Play from '../../images/play.svg';
-import Pause from '../../images/pause.svg';
+import Play from '../../assets/play.svg';
+import Pause from '../../assets/pause.svg';
 
 const Container = styled(BtnContainer)`
   position: relative;
@@ -26,4 +26,4 @@ function PlayBtn({ onClick, playing }) {
   );
 }
 
-export default PlayBtn;
+export default React.memo(PlayBtn);

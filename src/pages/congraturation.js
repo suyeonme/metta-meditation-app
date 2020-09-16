@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Figure from '../images/figure-3.svg';
+import Figure from '../assets/figure-3.svg';
 import { Title } from '../style/style';
 
 const Container = styled.div`

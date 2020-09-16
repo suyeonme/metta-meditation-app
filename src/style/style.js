@@ -36,13 +36,6 @@ export const Title = styled.h1`
   ${sizeStyles}
 `;
 
-export const FlexColDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center:
-`;
-
 export const NavLink = styled(Link)`
   color: black;
   text-decoration: none;

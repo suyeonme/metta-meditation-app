@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon } from '../components/theme/themeStyles';
-import MountainIcon from '../images/mountain-2.png';
+import MountainIcon from '../assets/mountain-2.png';
 import Theme from '../components/theme/theme';
 
 function Mountain(props) {

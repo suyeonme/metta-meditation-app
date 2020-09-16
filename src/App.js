@@ -12,16 +12,17 @@ import Rain from './pages/rain';
 import Congraturation from './pages/congraturation';
 
 // Animation & page transition
-// Set timer modal
-// Functionalilties
-// Height & width
+// Stop sound when go back to theme page
 
-// Stop timer and sound when time out
-// Circular progress bar
+// Media query, optimization, propType
+// Clutter folders
+// theme: container
+// component name: capital
 
 function App() {
   // Redirect - Guard
   // Repeated localStorage
+  // Height & width
 
   return (
     <div className="App">

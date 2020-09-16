@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+
+import useClickOutside from '../../hooks/useClickOutside';
 
 const BtnContainer = styled.div`
   position: absolute;
@@ -23,43 +25,45 @@ const Span = styled.span`
   font-size: 1.2rem;
 `;
 
-const SubBtnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const SubBtn = styled.button`
+  display: block;
   background: transparent;
-  margin: 5px;
   color: white;
   font-size: 1rem;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
+  margin: 5px;
 `;
 
 function TimerBtn({ onClick }) {
   const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef();
 
   const times = [
     { duration: 300, text: '5 min' },
     { duration: 600, text: '10 min' },
     { duration: 900, text: '15 min' },
   ];
+
+  const handleClick = e => {
+    if (e.target.id !== 'timeBtn') setIsOpen(!isOpen);
+  };
+
+  useClickOutside(ref, () => {
+    setIsOpen(false);
+  });
+
   const buttons = times.map((t, i) => (
-    <SubBtn id="btn" onClick={() => onClick(t.duration)} key={i}>
+    <SubBtn id="timeBtn" onClick={() => onClick(t.duration)} key={i}>
       {t.text}
     </SubBtn>
   ));
 
-  const handleClick = e => {
-    if (e.target.id !== 'btn') setIsOpen(!isOpen);
-  };
-
   return (
-    <BtnContainer onClick={handleClick} isOpen={isOpen}>
+    <BtnContainer onClick={handleClick} isOpen={isOpen} ref={ref}>
       <Span>TIMER</Span>
-      {isOpen && <SubBtnContainer>{buttons}</SubBtnContainer>}
+      {isOpen && <div>{buttons}</div>}
     </BtnContainer>
   );
 }

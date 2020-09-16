@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Title } from '../style/style';
 import Button from '../components/button/button';
-import Icon from '../images/figure-1.svg';
+import Icon from '../assets/figure-1.svg';
 
 const Container = styled.div`
   position: relative;
@@ -77,4 +77,4 @@ function Register(props) {
   );
 }
 
-export default Register;
+export default React.memo(Register);

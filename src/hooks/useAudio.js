@@ -29,7 +29,6 @@ const Player = ({ url, setStart }) => {
     setStart();
   };
 
-  // return <PlayBtn onClick={toggle} playing={playing} />;
   return <PlayBtn onClick={handleClick} playing={playing} />;
 };
 
