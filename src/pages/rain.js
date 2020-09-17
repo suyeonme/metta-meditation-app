@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Icon } from '../components/theme/themeStyles';
+import { LeftRainIcon, RightRainIcon } from '../containers/Theme/ThemeStyles';
+import Theme from '../containers/Theme/Theme';
 import RainIcon from '../assets/rain.png';
-import Theme from '../components/theme/theme';
 
-function Rain(props) {
+function Rain() {
   return (
     <Theme url="/assets/rain.mp3">
-      <Icon src={RainIcon} leftRain />
-      <Icon src={RainIcon} rightRain />
+      <LeftRainIcon src={RainIcon} />
+      <RightRainIcon src={RainIcon} />
     </Theme>
   );
 }

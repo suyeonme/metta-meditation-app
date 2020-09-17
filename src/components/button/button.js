@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Arrow from '../../assets/arrow.svg';
 
@@ -29,5 +30,10 @@ function Button({ onClick, name }) {
     </BtnContainer>
   );
 }
+
+Button.propTypes = {
+  onClick: PropTypes.func,
+  name: PropTypes.string,
+};
 
 export default Button;

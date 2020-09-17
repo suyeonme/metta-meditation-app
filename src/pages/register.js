@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Title } from '../style/style';
-import Button from '../components/button/button';
+import Button from '../components/Button/Button';
 import Icon from '../assets/figure-1.svg';
 
 const Container = styled.div`

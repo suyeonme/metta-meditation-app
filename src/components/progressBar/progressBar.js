@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-import MeditatorIcon from '../../assets/figure-2.svg';
 import {
   PlayerContainer,
   FigureIcon,
   SVGIcon,
   Timer,
-} from '../theme/themeStyles';
+} from '../../containers/Theme/ThemeStyles';
+import MeditatorIcon from '../../assets/figure-2.svg';
 
 function ProgressBar({ duration, currentTime, playing }) {
   const [length, setLength] = useState();
@@ -39,7 +40,7 @@ function ProgressBar({ duration, currentTime, playing }) {
 
   return (
     <PlayerContainer>
-      <FigureIcon src={MeditatorIcon} alt="meditator" />
+      <FigureIcon src={MeditatorIcon} alt="meditator" playing={playing} />
 
       <SVGIcon {...svgConfig}>
         <circle {...circleConfig} stroke="#A0BDE6" />
@@ -52,7 +53,7 @@ function ProgressBar({ duration, currentTime, playing }) {
           transform="rotate(-90 226.5 226.5)"
           style={{
             strokeDasharray: length,
-            strokeDashoffset: playing ? progress : length,
+            strokeDashoffset: progress ? progress : length,
           }}
         />
       </SVGIcon>
@@ -61,5 +62,11 @@ function ProgressBar({ duration, currentTime, playing }) {
     </PlayerContainer>
   );
 }
+
+ProgressBar.propTypes = {
+  duration: PropTypes.number,
+  currentTime: PropTypes.number,
+  playing: PropTypes.bool,
+};
 
 export default React.memo(ProgressBar);

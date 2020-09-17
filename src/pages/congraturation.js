@@ -11,28 +11,86 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 const FigureIcon = styled.img`
   width: 30rem;
   height: auto;
   transform: translateY(7rem);
+
+  @media (max-width: 1200px) {
+    width: 40rem;
+  }
+
+  @media (max-width: 900px) {
+    width: 20rem;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 576px) {
+    width: 16rem;
+  }
+
+  @media (max-width: 320px) {
+    width: 14rem;
+  }
+`;
+
+const CongratTitle = styled.h1`
+  font-weight: 400;
+  font-size: 3.5rem;
+
+  @media (max-width: 900px) {
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: 900px) {
+    text-align: center;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 2.2rem;
+  }
 `;
 
 const Span = styled.span`
   display: block;
-  margin-top: 5rem;
   width: 80%;
+  margin-top: 5rem;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    font-size: 2.3rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    padding: 0 10px;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 1.6rem;
+  }
 `;
 
 function Congraturation() {
   return (
     <Container>
       <FigureIcon src={Figure} />
-      <Title size="xl">
+      <CongratTitle>
         Congraturation!
         <Span>I wish you have a good day.</Span>
-      </Title>
+      </CongratTitle>
     </Container>
   );
 }

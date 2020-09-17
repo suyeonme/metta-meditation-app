@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-import { BtnContainer } from './button';
+import { BtnContainer } from './Button';
 import Play from '../../assets/play.svg';
 import Pause from '../../assets/pause.svg';
 
@@ -26,4 +27,9 @@ function PlayBtn({ onClick, playing }) {
   );
 }
 
-export default React.memo(PlayBtn);
+PlayBtn.propTypes = {
+  onClick: PropTypes.func,
+  playing: PropTypes.bool,
+};
+
+export default PlayBtn;

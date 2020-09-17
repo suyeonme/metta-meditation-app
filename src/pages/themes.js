@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Title, NavLink } from '../style/style';
-import Card from '../components/card/card';
-import { CardsContainer } from '../components/card/card';
+import Card from '../components/Card/Card';
+import { CardsContainer } from '../components/Card/Card';
 
 import WaveIcon from '../assets/wave-1.png';
 import mountainIcon from '../assets/mountain.png';
@@ -11,6 +11,41 @@ import rainIcon from '../assets/rain.png';
 
 const Container = styled.div`
   text-align: center;
+  ${'' /* top: 0;
+  left: 0;
+  right: 0;
+  height: 100%; */}
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+
+  @media (max-width: 768px) {
+    top: 8vh;
+    transform: translateY(0);
+  }
+`;
+
+const sizes = {
+  md: {
+    fontSize: '3rem',
+  },
+  sm: {
+    fontSize: '1.6rem',
+  },
+};
+
+const sizeStyles = css`
+  ${({ size }) => css`
+    font-weight: ${sizes[size].fontWeight};
+    font-size: ${sizes[size].fontSize};
+  `}
+`;
+
+const ThemeTitle = styled(Title)`
+  font-size: 3rem;
+  ${sizeStyles}
 `;
 
 function Themes() {

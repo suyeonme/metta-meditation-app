@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import useClickOutside from '../../hooks/useClickOutside';
 
@@ -16,6 +17,10 @@ const BtnContainer = styled.div`
   justify-content: ${props => (props.isOpen ? 'flex-start' : 'center')};
   align-items: center;
   cursor: pointer;
+
+  @media (max-width: 320px) {
+    top: 0;
+  }
 `;
 
 const Span = styled.span`
@@ -67,5 +72,9 @@ function TimerBtn({ onClick }) {
     </BtnContainer>
   );
 }
+
+TimerBtn.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export default TimerBtn;

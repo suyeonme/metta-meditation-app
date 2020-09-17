@@ -33,8 +33,46 @@ const sizeStyles = css`
 
 export const Title = styled.h1`
   margin-bottom: 2rem;
-  ${sizeStyles}
+  font-weight: 400;
+  ${'' /* ${sizeStyles}
+
+  @media (max-width: 900px) {
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: 900px) {
+    text-align: center;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 2.2rem;
+  } */}
 `;
+
+// export const Title = styled.h1`
+//   margin-bottom: 2rem;
+//   ${sizeStyles}
+
+//   @media (max-width: 900px) {
+//     font-size: 2.8rem;
+//   }
+
+//   @media (max-width: 900px) {
+//     text-align: center;
+//   }
+
+//   @media (max-width: 576px) {
+//     font-size: 2.5rem;
+//   }
+
+//   @media (max-width: 320px) {
+//     font-size: 2.2rem;
+//   }
+// `;
 
 export const NavLink = styled(Link)`
   color: black;

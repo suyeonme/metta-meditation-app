@@ -1,16 +1,15 @@
 import React from 'react';
 
-import { Icon } from '../components/theme/themeStyles';
-import Theme from '../components/theme/theme';
-
+import { WaveIcon, MoonIcon } from '../containers/Theme/ThemeStyles';
+import Theme from '../containers/Theme/Theme';
 import Wave from '../assets/wave-2.png';
 import Moon from '../assets/moon.png';
 
-function OceanWave(props) {
+function OceanWave() {
   return (
     <Theme url="/assets/ocean.mp3">
-      <Icon src={Wave} wave />
-      <Icon src={Moon} moon />
+      <WaveIcon src={Wave} />
+      <MoonIcon src={Moon} />
     </Theme>
   );
 }

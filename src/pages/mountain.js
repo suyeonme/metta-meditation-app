@@ -1,14 +1,17 @@
 import React from 'react';
 
-import { Icon } from '../components/theme/themeStyles';
+import {
+  BigMountainIcon,
+  SmallMountainIcon,
+} from '../containers/Theme/ThemeStyles';
+import Theme from '../containers/Theme/Theme';
 import MountainIcon from '../assets/mountain-2.png';
-import Theme from '../components/theme/theme';
 
-function Mountain(props) {
+function Mountain() {
   return (
     <Theme url="/assets/mountain.mp3">
-      <Icon src={MountainIcon} bigMountain />
-      <Icon src={MountainIcon} smallMountain />
+      <BigMountainIcon src={MountainIcon} />
+      <SmallMountainIcon src={MountainIcon} />
     </Theme>
   );
 }

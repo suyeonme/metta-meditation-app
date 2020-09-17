@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Header from '../header/header';
+import Header from '../Header/Header';
 
 const Container = styled.div`
   min-height: 100vh;
 `;
 
 const Wrapper = styled.div`
-  height: 92vh;
+  ${'' /* min-height: 92vh; */}
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,4 +25,4 @@ function Layout(props) {
   );
 }
 
-export default Layout;
+export default React.memo(Layout);
