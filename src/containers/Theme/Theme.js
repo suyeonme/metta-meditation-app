@@ -9,10 +9,10 @@ import PlayBtn from '../../components/Button/PlayBtn';
 import DynamicText from '../../components/DynamicText/DynamicText';
 
 function Theme(props) {
-  const { url } = props;
+  const { url, theme } = props;
   const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(false);
-  const [duration, setDuration] = useState(600);
+  const [duration, setDuration] = useState(360);
   const [currentTime, setCurrentTime] = useState(0);
 
   const handleClick = useCallback(time => setDuration(time), []);
@@ -64,6 +64,7 @@ function Theme(props) {
         playing={playing}
         duration={duration}
         currentTime={Math.floor(currentTime)}
+        theme={theme}
       />
       <PlayBtn playing={playing} onClick={handleToggle} />
       <TimerBtn onClick={handleClick} />

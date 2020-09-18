@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { Title } from '../../style/style';
+import { ExtraSmallTitle } from '../../style/style';
 
 const Container = styled.div`
   width: 280px;
@@ -32,6 +32,16 @@ const Container = styled.div`
     width: 290px;
     height: 330px;
   }
+
+  @media (max-width: 576px) {
+    width: 270px;
+    height: 310px;
+  }
+
+  @media (max-width: 320px) {
+    width: 250px;
+    height: 290px;
+  }
 `;
 
 const ImgContainer = styled.div`
@@ -39,13 +49,8 @@ const ImgContainer = styled.div`
   margin-top: auto;
 `;
 
-const CardTitle = styled(Title)`
+const CardTitle = styled(ExtraSmallTitle)`
   margin-top: auto;
-  font-size: 1.2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.6rem;
-  }
 `;
 
 export const CardsContainer = styled.div`
@@ -59,7 +64,6 @@ export const CardsContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    ${'' /* padding: 3rem 0; */}
   }
 `;
 

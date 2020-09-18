@@ -8,7 +8,6 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  ${'' /* min-height: 92vh; */}
   height: 100%;
   display: flex;
   justify-content: center;

@@ -1,8 +1,9 @@
-import styled, { keyframes, css } from 'styled-components';
-import { Title } from '../../style/style';
+import styled, { css } from 'styled-components';
+
+import { pulse } from '../../style/animation';
+import { SmallTitle } from '../../style/style';
 
 export const Container = styled.div`
-  ${'' /* position: relative; */}
   width: 100vw;
   height: 92vh;
   overflow: hidden;
@@ -33,18 +34,6 @@ export const SVGIcon = styled.svg`
   pointer-events: none;
 `;
 
-const pulse = keyframes`
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  70% {
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-`;
-
 export const FigureIcon = styled.img`
   position: absolute;
   top: 50%;
@@ -55,17 +44,16 @@ export const FigureIcon = styled.img`
   animation: ${props =>
     props.playing &&
     css`
-      ${pulse} 3s ease-in infinite;
+      ${pulse} 4s ease-in infinite;
     `};
 `;
 
-export const Timer = styled(Title)`
+export const Timer = styled(SmallTitle)`
   position: absolute;
   bottom: 17%;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  text-align: center;
 `;
 
 export const Icon = styled.img`

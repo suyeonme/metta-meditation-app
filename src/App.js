@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import './App.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -11,17 +11,11 @@ import Mountain from './pages/Mountain';
 import Rain from './pages/Rain';
 import Congraturation from './pages/Congraturation';
 
-// Media query
-// Timer button transition
-// Dynamic Text
-// React.memo
-
-// Clutter folders
-// Duration: maximum 8 min.
-// Redirect - Guard
+// Mobile route issue
 
 function App() {
   const location = useLocation();
+  const userName = localStorage.getItem('name');
 
   return (
     <div className="App">
@@ -29,11 +23,17 @@ function App() {
         <TransitionGroup>
           <CSSTransition
             key={location.pathname}
-            timeout={300}
+            timeout={1000}
             classNames="fade">
             <Switch location={location}>
-              <Route path="/" exact={true} component={Register} />
-              <Route path="/themes" component={Themes} />
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  userName ? <Themes /> : <Redirect to="/register" />
+                }
+              />
+              <Route path="/register" component={Register} />
               <Route path="/ocean" component={OceanWave} />
               <Route path="/mountain" component={Mountain} />
               <Route path="/rain" component={Rain} />

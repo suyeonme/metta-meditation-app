@@ -12,6 +12,11 @@ export const BtnContainer = styled.button`
   border-radius: 50%;
   cursor: pointer;
   margin-top: 3rem;
+
+  @media (max-width: 576px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 const ArrowIcon = styled.img`

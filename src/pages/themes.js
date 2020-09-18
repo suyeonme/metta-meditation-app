@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { Title, NavLink } from '../style/style';
+import { NavLink, MediumTitle, SmallTitle } from '../style/style';
 import Card from '../components/Card/Card';
 import { CardsContainer } from '../components/Card/Card';
 
@@ -25,27 +25,10 @@ const Container = styled.div`
     top: 8vh;
     transform: translateY(0);
   }
-`;
 
-const sizes = {
-  md: {
-    fontSize: '3rem',
-  },
-  sm: {
-    fontSize: '1.6rem',
-  },
-};
-
-const sizeStyles = css`
-  ${({ size }) => css`
-    font-weight: ${sizes[size].fontWeight};
-    font-size: ${sizes[size].fontSize};
-  `}
-`;
-
-const ThemeTitle = styled(Title)`
-  font-size: 3rem;
-  ${sizeStyles}
+  @media (max-width: 576px) {
+    top: 10vh;
+  }
 `;
 
 function Themes() {
@@ -65,10 +48,10 @@ function Themes() {
 
   return (
     <Container>
-      <Title size="md">
+      <MediumTitle>
         Welcome, <strong>{name}</strong>
-      </Title>
-      <Title size="sm">Choose your favorite theme</Title>
+      </MediumTitle>
+      <SmallTitle>Choose your favorite theme</SmallTitle>
       <CardsContainer>{themes}</CardsContainer>
     </Container>
   );

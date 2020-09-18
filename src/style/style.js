@@ -1,46 +1,12 @@
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const sizes = {
-  xl: {
-    fontWeight: 700,
-    fontSize: '3.5rem',
-  },
-  lg: {
-    fontWeight: 700,
-    fontSize: '3rem',
-  },
-  md: {
-    fontWeight: 400,
-    fontSize: '3rem',
-  },
-  sm: {
-    fontWeight: 400,
-    fontSize: '1.6rem',
-  },
-  xs: {
-    fontWeight: 400,
-    fontSize: '1.2rem',
-  },
-};
-
-const sizeStyles = css`
-  ${({ size }) => css`
-    font-weight: ${sizes[size].fontWeight};
-    font-size: ${sizes[size].fontSize};
-  `}
-`;
-
-export const Title = styled.h1`
+export const BigTitle = styled.h1`
+  font-size: 3.5rem;
   margin-bottom: 2rem;
-  font-weight: 400;
-  ${'' /* ${sizeStyles}
 
   @media (max-width: 900px) {
     font-size: 2.8rem;
-  }
-
-  @media (max-width: 900px) {
     text-align: center;
   }
 
@@ -50,29 +16,43 @@ export const Title = styled.h1`
 
   @media (max-width: 320px) {
     font-size: 2.2rem;
-  } */}
+  }
 `;
 
-// export const Title = styled.h1`
-//   margin-bottom: 2rem;
-//   ${sizeStyles}
+export const MediumTitle = styled.h2`
+  font-size: 3rem;
+  margin-bottom: 2rem;
 
-//   @media (max-width: 900px) {
-//     font-size: 2.8rem;
-//   }
+  @media (max-width: 576px) {
+    font-size: 2.2rem;
+  }
 
-//   @media (max-width: 900px) {
-//     text-align: center;
-//   }
+  @media (max-width: 320px) {
+    font-size: 1.9rem;
+  }
+`;
 
-//   @media (max-width: 576px) {
-//     font-size: 2.5rem;
-//   }
+export const SmallTitle = styled.h3`
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
 
-//   @media (max-width: 320px) {
-//     font-size: 2.2rem;
-//   }
-// `;
+  @media (max-width: 576px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 1.1rem;
+  }
+`;
+
+export const ExtraSmallTitle = styled.h4`
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+`;
 
 export const NavLink = styled(Link)`
   color: black;

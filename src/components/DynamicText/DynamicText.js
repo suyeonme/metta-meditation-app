@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
-const Text = styled.h3`
-  text-align: center;
-  font-size: 1.7rem;
-  font-weight: 400;
-  letter-spacing: 1px;
+import styled, { css } from 'styled-components';
+import PropType from 'prop-types';
 
-  ${'' /* opacity: 0;
-  animation: ${fade} 3s ease-in infinite; */}
+import { fade } from '../../style/animation';
+import { SmallTitle } from '../../style/style';
+
+const Text = styled(SmallTitle)`
+  opacity: 0;
+  animation: ${props =>
+    props.playing &&
+    css`
+      ${fade} 4s ease-in infinite
+    `};
 `;
 
 function DynamicText({ playing }) {
@@ -20,14 +24,18 @@ function DynamicText({ playing }) {
     if (playing) {
       const interval = setInterval(() => {
         setTextIdx(index => index + 1);
-      }, 3000);
+      }, 4000);
       return () => {
         clearInterval(interval);
       };
     }
   }, [playing]);
 
-  return <Text>{textThatChanges}</Text>;
+  return <Text playing={playing}>{textThatChanges}</Text>;
 }
+
+DynamicText.propType = {
+  playing: PropType.bool,
+};
 
 export default DynamicText;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { WaveIcon, MoonIcon } from '../containers/Theme/ThemeStyles';
 import Theme from '../containers/Theme/Theme';
@@ -7,11 +8,15 @@ import Moon from '../assets/moon.png';
 
 function OceanWave() {
   return (
-    <Theme url="/assets/ocean.mp3">
+    <Theme url="/assets/ocean.mp3" theme="ocean">
       <WaveIcon src={Wave} />
       <MoonIcon src={Moon} />
     </Theme>
   );
 }
+
+OceanWave.propTypes = {
+  theme: PropTypes.string,
+};
 
 export default OceanWave;

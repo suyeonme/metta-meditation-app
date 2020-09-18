@@ -46,9 +46,9 @@ function TimerBtn({ onClick }) {
   const ref = useRef();
 
   const times = [
-    { duration: 300, text: '5 min' },
-    { duration: 600, text: '10 min' },
-    { duration: 900, text: '15 min' },
+    { duration: 240, text: '4 min' },
+    { duration: 360, text: '6 min' },
+    { duration: 480, text: '8 min' },
   ];
 
   const handleClick = e => {

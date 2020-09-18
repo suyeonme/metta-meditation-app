@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Title } from '../style/style';
+import { MediumTitle } from '../style/style';
 import Button from '../components/Button/Button';
 import Icon from '../assets/figure-1.svg';
 
@@ -16,6 +16,10 @@ const Container = styled.div`
   width: 100vw;
   top: 0;
   left: 0;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 const Input = styled.input`
@@ -25,6 +29,15 @@ const Input = styled.input`
   text-align: center;
   border-bottom: 3px solid black;
   margin-bottom: 5rem;
+
+  @media (max-width: 900px) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 576px) {
+    width: 80%;
+    font-size: 1.6rem;
+  }
 `;
 
 const QuestionContainer = styled.div`
@@ -42,11 +55,36 @@ const HeartIcon = styled.div`
   transform: rotate(-10deg);
   background: url(${Icon}) center center no-repeat;
   background-size: 100%;
+
+  @media (max-width: 1200px) {
+    width: 360px;
+    height: 360px;
+    left: 0;
+    bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    width: 340px;
+    height: 340px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: rotate(0);
+  }
+
+  @media (max-width: 576px) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (max-width: 320px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 function Register(props) {
   const [name, setName] = useState('');
-  const userName = localStorage.getItem('name');
 
   const validateInput = name => {
     if (!name) alert('Can you enter your name, sir?');
@@ -57,17 +95,16 @@ function Register(props) {
 
   const handleClick = n => {
     localStorage.setItem('name', n);
-    const userName = localStorage.getItem('name');
-    userName ? props.history.push('/themes') : validateInput();
-  };
 
-  if (userName) return <Redirect to="/themes" />;
+    const userName = localStorage.getItem('name');
+    userName ? props.history.push('/') : validateInput();
+  };
 
   return (
     <div>
       <Container>
         <QuestionContainer>
-          <Title size="lg">What is your name?</Title>
+          <MediumTitle>What is your name?</MediumTitle>
           <Input onChange={handlechange} value={name} />
           <Button onClick={handleClick} name={name} />
         </QuestionContainer>
