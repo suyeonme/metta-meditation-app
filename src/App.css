@@ -84,17 +84,3 @@ h4 {
   transform: scale(1.1);
   transition: opacity 300ms, transform 300ms;
 }
-
-/* @media (max-width: 1024px) {
-  width: 60%;
-}
-@media (max-width: 768px) {
-  width: 75%;
-}
-@media (max-width: 576px) {
-  width: 82%;
-  transform: translateX(20px);
-}
-@media (max-width: 320px) {
-  width: 78%;
-} */

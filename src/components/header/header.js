@@ -8,6 +8,7 @@ const HeaderContainer = styled.header`
   height: 8vh;
   display: flex;
   align-items: center;
+  background: white;
 `;
 
 const LogoText = styled.h1`

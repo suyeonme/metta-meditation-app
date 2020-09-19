@@ -17,6 +17,7 @@ const BtnContainer = styled.div`
   justify-content: ${props => (props.isOpen ? 'flex-start' : 'center')};
   align-items: center;
   cursor: pointer;
+  z-index: 3;
 
   @media (max-width: 320px) {
     top: 0;

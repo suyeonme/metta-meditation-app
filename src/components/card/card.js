@@ -14,7 +14,7 @@ const Container = styled.div`
   cursor: pointer;
   transition: transform 0.2s ease-in;
   margin: 0 20px;
-
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,12 +45,14 @@ const Container = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  width: 70%;
-  margin-top: auto;
+  width: 100%;
+  height: 100%;
+  background: ${props => `url(${props.img})`} no-repeat center center;
+  background-size: cover;
 `;
 
 const CardTitle = styled(ExtraSmallTitle)`
-  margin-top: auto;
+  margin: 10px 0;
 `;
 
 export const CardsContainer = styled.div`
@@ -70,9 +72,7 @@ export const CardsContainer = styled.div`
 function Card({ img, title }) {
   return (
     <Container>
-      <ImgContainer>
-        <img src={img} alt={img} />
-      </ImgContainer>
+      <ImgContainer img={img} />
       <CardTitle>{title}</CardTitle>
     </Container>
   );

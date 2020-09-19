@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+import BgVideo from '../../components/BgVideo/BgVideo';
 import { Container } from './ThemeStyles';
+import DynamicText from '../../components/DynamicText/DynamicText';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import TimerBtn from '../../components/Button/TimerBtn';
 import PlayBtn from '../../components/Button/PlayBtn';
 
-import DynamicText from '../../components/DynamicText/DynamicText';
-
 function Theme(props) {
-  const { url, theme } = props;
+  const { url, theme, bg } = props;
   const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(360);
@@ -59,6 +60,7 @@ function Theme(props) {
 
   return (
     <Container>
+      <BgVideo bg={bg} />
       <DynamicText playing={playing} />
       <ProgressBar
         playing={playing}
@@ -72,5 +74,11 @@ function Theme(props) {
     </Container>
   );
 }
+
+Theme.propTypes = {
+  url: PropTypes.string,
+  theme: PropTypes.string,
+  bg: PropTypes.string,
+};
 
 export default React.memo(Theme);

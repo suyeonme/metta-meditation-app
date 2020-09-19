@@ -4,14 +4,10 @@ import './App.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Layout from './components/Layout/Layout';
-import Themes from './pages/Themes';
 import Register from './pages/Register';
-import OceanWave from './pages/OceanWave';
-import Mountain from './pages/Mountain';
-import Rain from './pages/Rain';
 import Congraturation from './pages/Congraturation';
-
-// Mobile route issue
+import Themes from './pages/Themes';
+import { OceanWave, MountainView, RainyBeach } from './pages/Theme';
 
 function App() {
   const location = useLocation();
@@ -35,8 +31,8 @@ function App() {
               />
               <Route path="/register" component={Register} />
               <Route path="/ocean" component={OceanWave} />
-              <Route path="/mountain" component={Mountain} />
-              <Route path="/rain" component={Rain} />
+              <Route path="/mountain" component={MountainView} />
+              <Route path="/rainy" component={RainyBeach} />
               <Route path="/congraturation" component={Congraturation} />
             </Switch>
           </CSSTransition>
