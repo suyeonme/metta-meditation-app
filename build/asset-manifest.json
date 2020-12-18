@@ -1,30 +1,34 @@
 {
   "files": {
-    "main.css": "/static/css/main.6494043d.chunk.css",
-    "main.js": "/static/js/main.d62b93bd.chunk.js",
-    "main.js.map": "/static/js/main.d62b93bd.chunk.js.map",
+    "main.css": "/static/css/main.26a3bbf8.chunk.css",
+    "main.js": "/static/js/main.f9ed0d98.chunk.js",
+    "main.js.map": "/static/js/main.f9ed0d98.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a8c1ea87.js",
     "runtime-main.js.map": "/static/js/runtime-main.a8c1ea87.js.map",
-    "static/js/2.82f6e1c8.chunk.js": "/static/js/2.82f6e1c8.chunk.js",
-    "static/js/2.82f6e1c8.chunk.js.map": "/static/js/2.82f6e1c8.chunk.js.map",
+    "static/js/2.eec5210d.chunk.js": "/static/js/2.eec5210d.chunk.js",
+    "static/js/2.eec5210d.chunk.js.map": "/static/js/2.eec5210d.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.e51b76d6762ac9e9e800824ccbea3d84.js": "/precache-manifest.e51b76d6762ac9e9e800824ccbea3d84.js",
+    "precache-manifest.5bf5ef511b8f58e66b163412515f6a00.js": "/precache-manifest.5bf5ef511b8f58e66b163412515f6a00.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.6494043d.chunk.css.map": "/static/css/main.6494043d.chunk.css.map",
-    "static/js/2.82f6e1c8.chunk.js.LICENSE.txt": "/static/js/2.82f6e1c8.chunk.js.LICENSE.txt",
+    "static/css/main.26a3bbf8.chunk.css.map": "/static/css/main.26a3bbf8.chunk.css.map",
+    "static/js/2.eec5210d.chunk.js.LICENSE.txt": "/static/js/2.eec5210d.chunk.js.LICENSE.txt",
     "static/media/arrow.svg": "/static/media/arrow.d31490cb.svg",
     "static/media/figure-1.svg": "/static/media/figure-1.52fee42d.svg",
     "static/media/figure-2.svg": "/static/media/figure-2.7f83b0ce.svg",
     "static/media/figure-3.svg": "/static/media/figure-3.92fab6b6.svg",
-    "static/media/mountain-2.png": "/static/media/mountain-2.e9864b01.png",
-    "static/media/mountain.png": "/static/media/mountain.d4bbb90d.png",
+    "static/media/mountain.mp4": "/static/media/mountain.8e7ac283.mp4",
+    "static/media/mountain.svg": "/static/media/mountain.f8c957f0.svg",
+    "static/media/ocean.mp4": "/static/media/ocean.38e08131.mp4",
+    "static/media/ocean.svg": "/static/media/ocean.8b3c718e.svg",
     "static/media/pause.svg": "/static/media/pause.77ad076f.svg",
-    "static/media/play.svg": "/static/media/play.cfc8963d.svg"
+    "static/media/play.svg": "/static/media/play.cfc8963d.svg",
+    "static/media/rain.svg": "/static/media/rain.1ba8af65.svg",
+    "static/media/rain.mp4": "/static/media/rain.fac70b60.mp4"
   },
   "entrypoints": [
     "static/js/runtime-main.a8c1ea87.js",
-    "static/js/2.82f6e1c8.chunk.js",
-    "static/css/main.6494043d.chunk.css",
-    "static/js/main.d62b93bd.chunk.js"
+    "static/js/2.eec5210d.chunk.js",
+    "static/css/main.26a3bbf8.chunk.css",
+    "static/js/main.f9ed0d98.chunk.js"
   ]
 }

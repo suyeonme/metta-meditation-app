@@ -2,15 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import BgVideo from '../../components/BgVideo/BgVideo';
-import { Container } from './ThemeStyles';
-import DynamicText from '../../components/DynamicText/DynamicText';
-import ProgressBar from '../../components/ProgressBar/ProgressBar';
-import TimerBtn from '../../components/Button/TimerBtn';
-import PlayBtn from '../../components/Button/PlayBtn';
+import { Container } from 'containers/Theme/ThemeStyles';
+import FadeText from 'components/FadeText/FadeText';
+import ProgressBar from 'components/ProgressBar/ProgressBar';
+import TimerBtn from 'components/Button/TimerBtn';
+import PlayBtn from 'components/Button/PlayBtn';
 
 function Theme(props) {
-  const { url, theme, bg } = props;
+  const { url, theme, bgImg } = props;
   const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(360);
@@ -31,26 +30,19 @@ function Theme(props) {
   // Audio
   useEffect(() => {
     audio.addEventListener('timeupdate', updateCurrentTime);
-
     return () => audio.removeEventListener('timeupdate', updateCurrentTime);
   }, [audio, updateCurrentTime]);
 
   useEffect(() => {
     playing ? audio.play() : audio.pause();
-
-    return () => {
-      audio.pause();
-    };
+    return () => audio.pause();
   }, [playing, audio]);
 
   // Timer
   useEffect(() => {
     if (playing) {
       const token = setTimeout(updateTime, 1000);
-
-      return function cleanUp() {
-        clearTimeout(token);
-      };
+      return () => clearTimeout(token);
     }
   });
 
@@ -59,9 +51,8 @@ function Theme(props) {
   }
 
   return (
-    <Container>
-      <BgVideo bg={bg} />
-      <DynamicText playing={playing} />
+    <Container bgImg={bgImg}>
+      <FadeText playing={playing} />
       <ProgressBar
         playing={playing}
         duration={duration}
@@ -69,7 +60,7 @@ function Theme(props) {
         theme={theme}
       />
       <PlayBtn playing={playing} onClick={handleToggle} />
-      <TimerBtn onClick={handleClick} />
+      <TimerBtn onClick={handleClick} duration={duration} />
       {props.children}
     </Container>
   );
@@ -78,7 +69,7 @@ function Theme(props) {
 Theme.propTypes = {
   url: PropTypes.string,
   theme: PropTypes.string,
-  bg: PropTypes.string,
+  bgImg: PropTypes.string,
 };
 
 export default React.memo(Theme);

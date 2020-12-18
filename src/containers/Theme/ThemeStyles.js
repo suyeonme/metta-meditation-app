@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { pulse } from '../../style/animation';
-import { SmallTitle } from '../../style/style';
+import { pulse } from 'style/animation';
+import { SmallTitle } from 'style/style';
 
 export const Container = styled.div`
   width: 100vw;
@@ -11,11 +11,15 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   position: absolute;
   top: 8vh;
   right: 0;
   left: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(${props => props.bgImg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const PlayerContainer = styled.div`
@@ -40,7 +44,7 @@ export const FigureIcon = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 55%;
   z-index: 3;
 
   animation: ${props =>

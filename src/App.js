@@ -1,42 +1,36 @@
 import React from 'react';
-import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import './App.css';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import Layout from './components/Layout/Layout';
-import Register from './pages/Register';
-import Congraturation from './pages/Congraturation';
-import Themes from './pages/Themes';
-import { OceanWave, MountainView, RainyBeach } from './pages/Theme';
+import Themes from 'pages/Themes';
+import Register from 'pages/Register';
+import Congraturation from 'pages/Congraturation';
+import { OceanWave, MountainView, RainyBeach } from 'pages/Themes';
+import Layout from 'components/Layout/Layout';
 
 function App() {
   const location = useLocation();
   const userName = localStorage.getItem('name');
+  let route;
+
+  if (!userName) {
+    route = <Route exact path="/" component={Register} />;
+  } else {
+    route = (
+      <>
+        <Route exact path="/" component={Themes} />
+        <Route path="/ocean" component={OceanWave} />
+        <Route path="/mountain" component={MountainView} />
+        <Route path="/rainy" component={RainyBeach} />
+        <Route path="/congraturation" component={Congraturation} />
+      </>
+    );
+  }
 
   return (
     <div className="App">
       <Layout>
-        <TransitionGroup>
-          <CSSTransition
-            key={location.pathname}
-            timeout={1000}
-            classNames="fade">
-            <Switch location={location}>
-              <Route
-                exact
-                path="/"
-                render={() =>
-                  userName ? <Themes /> : <Redirect to="/register" />
-                }
-              />
-              <Route path="/register" component={Register} />
-              <Route path="/ocean" component={OceanWave} />
-              <Route path="/mountain" component={MountainView} />
-              <Route path="/rainy" component={RainyBeach} />
-              <Route path="/congraturation" component={Congraturation} />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
+        <Switch location={location}>{route}</Switch>
       </Layout>
     </div>
   );

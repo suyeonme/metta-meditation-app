@@ -1,15 +1,16 @@
 ## Metta: loving kindness
 
-> Metta is a simple meditation web application based on react. 
+> Metta is a simple meditation web application based on react.
 
 ### Live demo
+
 You can check demo [here](https://metta-meditation.netlify.app).
 
 <br>
 
 ### Preview
 
-![metta-demo](https://user-images.githubusercontent.com/55128990/93561871-e7212400-f9bf-11ea-9da4-7ccc363cde48.gif)
+![Kapture 2020-12-18 at 17 13 05-min](https://user-images.githubusercontent.com/55128990/102591232-0a8d7380-4155-11eb-97ca-e1a9fa2b136d.gif)
 
 <br>
 
@@ -38,15 +39,24 @@ Let's work hard together! We can do it!
 <br>
 
 ### Getting started
+
 Install npm packages
+
 ```bash
 npm install
 ```
 
 Start dev server
+
 ```bash
 npm start
 ```
+
+<br>
+
+### If you finish meditation, you can get a congraturation message!
+
+<img width="1440" alt="Screen Shot 2020-12-18 at 4 26 32 PM" src="https://user-images.githubusercontent.com/55128990/102588595-0c553800-4151-11eb-8708-662cc5ace70f.png">
 
 ### Note
 
